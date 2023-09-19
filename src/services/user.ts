@@ -19,6 +19,7 @@ export const LoginService = async (email: string, password: string) => {
     const { token, name } = userData.data
 
     localStorage.setItem("token", token)
+    localStorage.setItem("name", name)
     api.defaults.headers.Authorization = token
     return { success: true, message: name }
   } catch (error) {
