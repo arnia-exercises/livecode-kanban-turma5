@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent, useState } from "react"
 import { Column } from "../../assets/styles/GlobalStyle"
 import { createCard } from "../../services/card"
 import { useCards } from "../../context/CardContext"
@@ -7,12 +7,6 @@ export default function CreateCard () {
   const { setCards } = useCards()
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
-
-  // COLOCAR ISSO NUM HEADER
-  const [name, setName] = useState('')
-  useEffect(() => {
-    setName(localStorage.getItem('name') ?? '')
-  }, [])
 
 
   const handleSubmit = async (evt: FormEvent<HTMLFormElement>) => {
@@ -32,10 +26,6 @@ export default function CreateCard () {
 
   return (
     <Column>
-
-      <h2>{name}</h2>
-
-
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title</label>

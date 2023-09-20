@@ -3,6 +3,7 @@ import { Column, Content } from "../../assets/styles/GlobalStyle";
 import CreateCard from "../../components/CreateCard";
 import { useCards } from "../../context/CardContext";
 import { getAllCards } from "../../services/card";
+import Cards from "../../components/Cards";
 
 export default function Kanban () {
   const { cards, setCards } = useCards()
@@ -24,18 +25,10 @@ export default function Kanban () {
   return (
     <Content>
       <CreateCard />
-      <Column>
-        <h1>TODO</h1>
-        <pre>{JSON.stringify(cards.filter(card => card.column === 'TODO'), null, 2)}</pre>
-      </Column>
-      <Column>
-        <h1>DOING</h1>
-        <pre>{JSON.stringify(cards.filter(card => card.column === 'DOING'), null, 2)}</pre>
-      </Column>
-      <Column>
-        <h1>DONE</h1>
-        <pre>{JSON.stringify(cards.filter(card => card.column === 'DONE'), null, 2)}</pre>
-      </Column>
+
+      <Cards title="TO DO" type="TODO" />
+      <Cards title="DOING" type="DOING" />
+      <Cards title="DONE" type="DONE" />
     </Content>
   )
 }
